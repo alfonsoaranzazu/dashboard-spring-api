@@ -26,13 +26,14 @@ public class AccountController {
 		}
 	}
 	
-	@RequestMapping(value="/signup", method=RequestMethod.POST)
-	public void signup(@ModelAttribute Account account) {
+	@RequestMapping(value="/signup", method=RequestMethod.POST, produces="application/json")
+	public @ResponseBody String signup(@ModelAttribute Account account) {
 		if (this.accountDAO.exists(account)) {
-			
+			return new Response(false, "Account exists").toString();
 		} else {
 			account.setEmployeeId( (int) employeeId.incrementAndGet());
 			this.accountDAO.createAccount(account);
+			return new Response(true, "Account created").toString();
 		}
 	}
 }
