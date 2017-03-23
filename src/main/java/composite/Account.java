@@ -1,7 +1,5 @@
 package composite;
 
-import java.util.concurrent.atomic.AtomicLong;
-
 public class Account {
 	private int accountId;
 	private int employeeId;
