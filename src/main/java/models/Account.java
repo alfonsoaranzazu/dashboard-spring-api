@@ -1,4 +1,4 @@
-package composite;
+package models;
 
 public class Account {
 	private int accountId;

@@ -1,4 +1,4 @@
-package composite;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,6 +11,8 @@ import javax.sql.DataSource;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+
+import models.Account;
 
 public class AccountDAOImpl implements AccountDAO{
 	private JdbcTemplate template;

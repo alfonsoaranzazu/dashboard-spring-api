@@ -11,6 +11,9 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import DAO.AccountDAO;
+import DAO.AccountDAOImpl;
+
 @Configuration
 @ComponentScan(basePackages="composite")
 @EnableWebMvc

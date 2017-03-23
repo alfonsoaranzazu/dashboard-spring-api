@@ -1,4 +1,6 @@
-package composite;
+package DAO;
+
+import models.Account;
 
 public interface AccountDAO {
 	
