@@ -13,6 +13,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import DAO.AccountDAO;
 import DAO.AccountDAOImpl;
+import DAO.EmployeeDAO;
+import DAO.EmployeeDAOImpl;
 
 @Configuration
 @ComponentScan(basePackages="composite")
@@ -49,5 +51,10 @@ public class WebServiceConfiguration extends WebMvcConfigurerAdapter {
 	@Bean
 	public AccountDAO getAccountDAO() {
 		return new AccountDAOImpl(this.getDataSource(), this.getConnection());
+	}
+	
+	@Bean 
+	public EmployeeDAO getEmployeeDAO() {
+		return new EmployeeDAOImpl(this.getDataSource(), this.getConnection());
 	}
 }

@@ -3,14 +3,9 @@ package DAO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
-import java.sql.SQLException;
 import java.sql.Statement;
-
 import javax.sql.DataSource;
-
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
 
 import models.Account;
 
@@ -25,30 +20,11 @@ public class AccountDAOImpl implements AccountDAO{
 	
 	public void createAccount(Account account) {
 		try {
-			String sql = "INSERT INTO account (EMPLOYEE_ID, USERNAME, PASSWORD) VALUES (?, ?, ?)";
-			this.template.update(sql, account.getEmployeeId(), account.getUsername(), account.getPassword());
+			String sql = "INSERT INTO account (USERNAME, PASSWORD) VALUES (?, ?)";
+			this.template.update(sql, account.getUsername(), account.getPassword());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public Account get(final int accountId) {
-		String sql = "SELECT * FROM account WHERE ACCOUNT_ID=" + accountId;
-		
-		return this.template.query(sql, new ResultSetExtractor<Account>() {
-			 
-	        @Override
-	        public Account extractData(ResultSet rs) throws SQLException, DataAccessException {
-	            if (rs.next()) {
-	                Account account = new Account(rs.getString("USERNAME"), rs.getString("PASSWORD"));
-	                account.setAccountId(accountId);
-	                account.setEmployeeId(rs.getInt("EMPLOYEE_ID"));
-	                return account;
-	            }
-	 
-	            return null;
-	        }
-		});
 	}
 	
 	public boolean exists(Account account) {

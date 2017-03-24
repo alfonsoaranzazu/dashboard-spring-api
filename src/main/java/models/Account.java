@@ -2,7 +2,6 @@ package models;
 
 public class Account {
 	private int accountId;
-	private int employeeId;
 	private String username;
 	private String password;
 	
@@ -20,10 +19,6 @@ public class Account {
 		return this.accountId;
 	}
 	
-	public int getEmployeeId() {
-		return this.employeeId;
-	}
-	
 	public String getUsername() {
 		return this.username;
 	}
@@ -35,10 +30,6 @@ public class Account {
 	// Setters
 	public void setAccountId(int accountId) {
 		this.accountId = accountId;
-	}
-	
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
 	}
 	
 	public void setUsername(String username) {
