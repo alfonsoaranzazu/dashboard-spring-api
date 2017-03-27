@@ -10,8 +10,7 @@ public class Employee {
 		
 	}
 	
-	public Employee(int id, String name, String phone, String supervisors) {
-		this.id = id;
+	public Employee(String name, String phone, String supervisors) {
 		this.name = name;
 		this.phone = phone;
 		this.supervisors = supervisors;

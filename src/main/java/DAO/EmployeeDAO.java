@@ -12,7 +12,9 @@ public interface EmployeeDAO {
 	
 	public List<Employee> getList();
 	
-	public boolean delete(Employee employee);
+	public void delete(int id);
+	
+	public boolean exists(int employeeId);
 	
 	public boolean exists(Employee employee);
 }

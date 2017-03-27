@@ -3,7 +3,6 @@ import models.Account;
 import models.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +19,8 @@ public class AccountController {
 	private AccountDAO accountDAO;
 	
 	@RequestMapping(value="/authenticate", method=RequestMethod.POST, produces="application/json")
-	public @ResponseBody String authenticate(@ModelAttribute Account account) {
+	public @ResponseBody String authenticate(@RequestParam("username") String username, @RequestParam("password") String password) {
+		Account account = new Account(username, password);
 		if (this.accountDAO.exists(account)) {
 			return new Response(true, "Valid login credentials").toString();
 		} else {
