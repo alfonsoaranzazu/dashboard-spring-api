@@ -2,7 +2,7 @@
 Spring MVC REST API
 
 ## Dependencies
-Java 8
+Java 8  
 [Maven](https://maven.apache.org/install.html)
 
 ## Running the API
