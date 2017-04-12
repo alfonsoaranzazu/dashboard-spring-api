@@ -3,6 +3,7 @@ package composite;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeDAO employeeDAO;
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@RequestMapping(value="/employee", method=RequestMethod.POST, produces="application/json")
 	public @ResponseBody String createEmployee(@RequestParam("name") String name, @RequestParam("phone") String phone, @RequestParam("supervisors") String supervisors) {
 		Employee employee = new Employee(name, phone, supervisors);
@@ -30,11 +32,13 @@ public class EmployeeController {
 		}
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@RequestMapping(value="/employee", method=RequestMethod.GET, produces="application/json")
 	public @ResponseBody List<Employee> getEmployees() {
 		return this.employeeDAO.getList();
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@RequestMapping(value="/employee", method=RequestMethod.PUT, produces="application/json")
 	public @ResponseBody String updateEmployee(@RequestParam("id") int id, @RequestParam("name") String name,
 			@RequestParam("phone") String phone, @RequestParam("supervisors") String supervisors) {
@@ -50,6 +54,7 @@ public class EmployeeController {
 		}
 	}
 
+	@CrossOrigin(origins = "http://localhost:3000")
 	@RequestMapping(value="/employee", method=RequestMethod.DELETE, produces="application/json")
 	public @ResponseBody String deleteEmployee(@RequestParam("id") int id) {
 		if (this.employeeDAO.exists(id)) {

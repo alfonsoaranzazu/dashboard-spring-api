@@ -3,6 +3,7 @@ import models.Account;
 import models.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,7 @@ public class AccountController {
 	@Autowired
 	private AccountDAO accountDAO;
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@RequestMapping(value="/authenticate", method=RequestMethod.POST, produces="application/json")
 	public @ResponseBody String authenticate(@RequestParam("username") String username, @RequestParam("password") String password) {
 		Account account = new Account(username, password);
@@ -28,6 +30,7 @@ public class AccountController {
 		}
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@RequestMapping(value="/account", method=RequestMethod.POST, produces="application/json")
 	public @ResponseBody String signup(@RequestParam("username") String username, @RequestParam("password") String password) {
 		Account account = new Account(username, password);
